@@ -5,6 +5,7 @@ import json
 from datetime import datetime
 from pathlib import Path
 from dotenv import load_dotenv  # Import dotenv for loading .env files
+import random  # Add this import
 
 # Load environment variables from .env file
 load_dotenv()
@@ -167,8 +168,12 @@ async def main():
         logger.info("-" * 40)
         # --- Adjustable delay between accounts ---
         if target_username != target_usernames[-1]:
-            logger.debug(f"Sleeping for {delay_between_accounts} seconds before next account...")
-            await asyncio.sleep(delay_between_accounts)
+            # Calculate a random delay within ±30% of the base value
+            min_delay = delay_between_accounts * 0.7
+            max_delay = delay_between_accounts * 1.3
+            actual_delay = random.uniform(min_delay, max_delay)
+            logger.debug(f"Sleeping for {actual_delay:.2f} seconds before next account (base: {delay_between_accounts}s, range: {min_delay:.2f}-{max_delay:.2f})...")
+            await asyncio.sleep(actual_delay)
 
     logger.info("Completed processing all target usernames")
 
