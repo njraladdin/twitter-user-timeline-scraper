@@ -1,6 +1,7 @@
 # twitter-user-timeline-scraper
 
-A practical tool to fetch recent tweets from a list of Twitter usernames and save them as JSON files. You provide a list of usernames, and the script downloads their latest tweets and some user metadata for each, storing the results in an `output/` folder.
+A tool to fetch recent tweets from a list of Twitter usernames.
+ You provide a list of usernames, and the script downloads their latest tweets and some user metadata for each, storing the results in an `output/` folder.
 
 ## What does it do?
 - Reads Twitter usernames from `target_accounts.txt` (one username per line).
